@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Praktika_graph_function", "Praktika_graph_function\Praktika_graph_function.csproj", "{2F289FC6-48A8-4ADD-B5B1-32859C133021}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F289FC6-48A8-4ADD-B5B1-32859C133021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F289FC6-48A8-4ADD-B5B1-32859C133021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F289FC6-48A8-4ADD-B5B1-32859C133021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F289FC6-48A8-4ADD-B5B1-32859C133021}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1312E673-5E2D-41A3-813C-1ACECF17DD7A}
+	EndGlobalSection
+EndGlobal
