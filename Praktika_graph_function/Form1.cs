@@ -12,57 +12,50 @@ namespace Praktika_graph_function
 {
     public partial class graph_function : Form
     {
-        SolidBrush brush;   //кисть для отрисовки графика функции
+        SolidBrush brush;   //кисть для отрисовки разметки графика
         Font font;          //используемый шрифт для разметки графика
-
-        FontStyle my_font_style;
-        Color my_color;
 
         public graph_function()
         {
             InitializeComponent();
-
-            my_color = Color.Red;
-            my_font_style = FontStyle.Regular;
         }
 
-
+        //Функия задания начальных значений переменных
         private void graph_function_Load(object sender, EventArgs e)
         {
             font = new Font("Microsoft Sans Serif", 10);
             brush = new SolidBrush(Color.Black);
         }
 
-        //Функция смена стиля шрифта
-        private void btn_font_Click(object sender, EventArgs e)
+        //Функция смены шрифта
+        private void btn_new_font_Click(object sender, EventArgs e)
         {
-            Font_style form = new Font_style();
-            form.New_font = my_font_style;
+            Font_ form = new Font_();
+            form.New_font = font;
 
-            if (form.ShowDialog() == DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK )
             {
-                my_font_style = form.New_font;
+                font = form.New_font;
                 pictureBox_graph_func.Invalidate();
             }
+
         }
 
-        //Функция смены цвета графика
-        private void btn_color_Click(object sender, EventArgs e)
-        {
-            Color_ form = new Color_();
-            form.New_color = my_color;
-
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                my_color = form.New_color;
-                pictureBox_graph_func.Invalidate();
-            }
-        }
-
-        //Функция графика
+        //Функция нахождения координат точек через уравнение
         private double Function(double x)
         {
-            return Math.Exp(-3 * x) * Math.Abs(Math.Cos(20 * x));
+            //разбор функции по действиям
+            double item_1 = Math.Pow(x, 2);                     //x^2
+            double item_2 = Math.PI / 3;                        //pi/3
+            double item_3 = Math.Pow((item_1 + item_2), 2);     //(x^2 + pi/3)^2
+            double item_4 = Math.Sin(item_3);                   //sin(x^2 + pi/3)^2
+            double item_5 = Math.Pow(item_4, 3);                //sin^3(x^2 + pi/3)^2
+
+            double item_6 = item_5 - Math.Sqrt(x / 2);    
+
+            //предел функции
+            if (x >= 2 || x <= 12) return item_6;
+            else return 0;
         }
 
         //Функция создания графика
@@ -74,7 +67,7 @@ namespace Praktika_graph_function
 
             //установка масштабов для осей X, Y
             int Mx = (int)pictureBox_graph_func.Width - 2 * x0;
-            int My = (int)pictureBox_graph_func.Height - 2 * y0;
+            int My = -y0 + 10;
 
             //число точек
             int M = (int)numeric_count_point.Value;
@@ -100,16 +93,16 @@ namespace Praktika_graph_function
        
             //упругость графика
             float elasticity = (float)numeric_elasticity.Value;
-
+            
             graph.DrawCurve(Pens.Red, point, elasticity);   //график
 
-            //ось X
+            //создание оси X
             graph.DrawLine(Pens.Black, x0, y0, x0 + Mx, y0);
 
-            //ось Y
+            //создание оси Y
             graph.DrawLine(Pens.Black, x0, y0, x0, y0 + My);
 
-            //Разметка ось X
+            //Разметка оси X
             for (int i = 0; i <= 10; i++)
             {
                 double x = i / 10.0;
@@ -122,8 +115,8 @@ namespace Praktika_graph_function
                 graph.DrawString(x.ToString(), font, brush, xi - 4, y0 + 4);
             }
 
-            //Разметка ось Y
-            for (int i = 1; i <= 3; i++)
+            //Разметка оси Y
+            for (int i = 1; i <= 10; i++)
             {
                 double y = i / 10.0;
 
@@ -134,6 +127,12 @@ namespace Praktika_graph_function
                 //подпись ось координат
                 graph.DrawString(y.ToString(), font, brush, x0 - 27, yi - 8);
             }
+        }
+
+        //Функция закрытия формы через кнопку "Выход"
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

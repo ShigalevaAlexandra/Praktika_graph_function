@@ -10,29 +10,29 @@ using System.Windows.Forms;
 
 namespace Praktika_graph_function
 {
-    public partial class Font_style : Form
+    public partial class Font_ : Form
     {
-        public Font_style()
+        public Font_()
         {
             InitializeComponent();
         }
 
         //смена шрифта
-        public FontStyle New_font
+        public Font New_font
         {
             get
             {
-                if (radioBtn_italic.Checked) return FontStyle.Italic;
-                if (radioBtn_bold.Checked) return FontStyle.Bold;
-                if (radioBtn_regular.Checked) return FontStyle.Regular;
+                if (radioBtn_Modern.Checked) return new Font("Modern No", 10);
+                if (radioBtn_Palatino_Linotype.Checked) return new Font("Palatino Linotype", 10);
+                if (radioBtn_Tahoma.Checked) return new Font("Tahoma", 10);
 
-                return FontStyle.Underline;
+                return new Font("Microsoft Sans Serif", 10);
             }
             set
             {
-                if (value == FontStyle.Italic) radioBtn_italic.Checked = true;
-                if (value == FontStyle.Bold) radioBtn_bold.Checked = true;
-                if (value == FontStyle.Regular) radioBtn_regular.Checked = true;
+                if (value == new Font("Modern No", 10)) radioBtn_Modern.Checked = true;
+                if (value == new Font("Palatino Linotype", 10)) radioBtn_Palatino_Linotype.Checked = true;
+                if (value == new Font("Tahoma", 10)) radioBtn_Tahoma.Checked = true;
             }
         }
     }
